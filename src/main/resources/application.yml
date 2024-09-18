@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: Minglespace
+
+  profiles:
+    active: local
+    group:
+      local:
+        - test-db
+      prod:
+        - prod-db

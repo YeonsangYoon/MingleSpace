@@ -1,0 +1,30 @@
+env:
+  name: application-prod.yml
+  environment: production
+  server: https://www.minglespace.site
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  #Database
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PWD}
+
+  #JPA Config
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        default_batch_fetch_size: 500
+        dialect: org.hibernate.dialect.MySQLDialect
+
+server:
+  port: ${SERVER_PORT}
