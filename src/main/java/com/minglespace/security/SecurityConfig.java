@@ -10,6 +10,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @RequiredArgsConstructor
@@ -33,8 +34,8 @@ public class SecurityConfig {
         // csrf 비활성화
         http.csrf(AbstractHttpConfigurer::disable);
 
-        // session 비활성화
-        http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+        // session 활성화
+        http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS));
 
         // http 인증 설정
         String[] permitAllWhiteList = {
@@ -50,12 +51,17 @@ public class SecurityConfig {
         // login 설정
         http.formLogin(formLogin -> formLogin
                 .loginProcessingUrl("/login")
-                .successForwardUrl("/")
+                .usernameParameter("loginId")
+                .passwordParameter("password")
+                .defaultSuccessUrl("/")
         );
 
         // logout 설정
         http.logout(logout -> logout
                 .logoutUrl("/logout")
+                .logoutSuccessUrl("/")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
         );
 
         return http.build();
