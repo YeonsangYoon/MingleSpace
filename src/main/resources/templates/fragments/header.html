@@ -1,108 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-    <div th:fragment="header-signed">
-        <header class="bg-white shadow-md">
-            <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-                <!-- Logo Section -->
-                <div class="text-xl font-bold text-gray-800">
-                    <a href="/">MyLogo</a>
-                </div>
-
-                <!-- Navigation Menu -->
-                <nav class="hidden md:flex space-x-6 text-gray-600">
-                    <a href="#" class="hover:text-blue-500">Home</a>
-                    <a href="#" class="hover:text-blue-500">About</a>
-                    <a href="#" class="hover:text-blue-500">Services</a>
-                    <a href="#" class="hover:text-blue-500">Contact</a>
-                </nav>
-
-                <!-- Search Bar -->
-                <div class="hidden md:block">
-                    <label>
-                        <input type="text" class="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Search...">
-                    </label>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="space-x-4">
-                    <a class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600" th:href="@{/logout}">Logout</a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button class="text-gray-800 focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                        </svg>
-                    </button>
-                </div>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:fragment="header">
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Logo Section -->
+            <div class="text-xl font-bold text-gray-800">
+                <a href="/">MyLogo</a>
             </div>
 
-            <!-- Mobile Menu (hidden by default, shown on mobile view) -->
+            <!-- Navigation Menu -->
+            <nav class="hidden md:flex space-x-6 text-gray-600">
+                <a href="#" class="hover:text-blue-500">Home</a>
+                <a href="#" class="hover:text-blue-500">About</a>
+                <a href="#" class="hover:text-blue-500">Services</a>
+                <a href="#" class="hover:text-blue-500">Contact</a>
+            </nav>
+
+            <!-- Search Bar -->
+            <div class="hidden md:block">
+                <label>
+                    <input type="text" class="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Search...">
+                </label>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="space-x-4">
+                <a class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600" th:href="@{/logout}">Logout</a>
+                <a class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600" th:href="@{/login}">Login</a>
+                <a class="border border-blue-500 text-blue-500 px-4 py-2 rounded-md hover:bg-blue-500 hover:text-white" th:href="@{/login/signup}">Sign Up</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
             <div class="md:hidden">
-                <nav class="px-2 pt-2 pb-4 space-y-2">
-                    <a href="#" class="block px-2 py-1 text-gray-700 hover:bg-gray-200 rounded">Home</a>
-                    <a href="#" class="block px-2 py-1 text-gray-700 hover:bg-gray-200 rounded">About</a>
-                    <a href="#" class="block px-2 py-1 text-gray-700 hover:bg-gray-200 rounded">Services</a>
-                    <a href="#" class="block px-2 py-1 text-gray-700 hover:bg-gray-200 rounded">Contact</a>
-                </nav>
+                <button class="text-gray-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
             </div>
-        </header>
-    </div>
-    <div th:fragment="header-notsigned">
-        <header class="bg-white shadow-md">
-            <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-                <!-- Logo Section -->
-                <div class="text-xl font-bold text-gray-800">
-                    <a href="#">MyLogo</a>
-                </div>
+        </div>
 
-                <!-- Navigation Menu -->
-                <nav class="hidden md:flex space-x-6 text-gray-600">
-                    <a href="#" class="hover:text-blue-500">Home</a>
-                    <a href="#" class="hover:text-blue-500">About</a>
-                    <a href="#" class="hover:text-blue-500">Services</a>
-                    <a href="#" class="hover:text-blue-500">Contact</a>
-                </nav>
-
-                <!-- Search Bar -->
-                <div class="hidden md:block">
-                    <label>
-                        <input type="text" class="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Search...">
-                    </label>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="space-x-4">
-                    <a class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600" th:href="@{/login}">Login</a>
-                    <a class="border border-blue-500 text-blue-500 px-4 py-2 rounded-md hover:bg-blue-500 hover:text-white" th:href="@{/login/signup}">Sign Up</a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button class="text-gray-800 focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Mobile Menu (hidden by default, shown on mobile view) -->
-            <div class="md:hidden">
-                <nav class="px-2 pt-2 pb-4 space-y-2">
-                    <a href="#" class="block px-2 py-1 text-gray-700 hover:bg-gray-200 rounded">Home</a>
-                    <a href="#" class="block px-2 py-1 text-gray-700 hover:bg-gray-200 rounded">About</a>
-                    <a href="#" class="block px-2 py-1 text-gray-700 hover:bg-gray-200 rounded">Services</a>
-                    <a href="#" class="block px-2 py-1 text-gray-700 hover:bg-gray-200 rounded">Contact</a>
-                </nav>
-            </div>
-        </header>
-    </div>
-</body>
+        <!-- Mobile Menu (hidden by default, shown on mobile view) -->
+        <div class="md:hidden">
+            <nav class="px-2 pt-2 pb-4 space-y-2">
+                <a href="#" class="block px-2 py-1 text-gray-700 hover:bg-gray-200 rounded">Home</a>
+                <a href="#" class="block px-2 py-1 text-gray-700 hover:bg-gray-200 rounded">About</a>
+                <a href="#" class="block px-2 py-1 text-gray-700 hover:bg-gray-200 rounded">Services</a>
+                <a href="#" class="block px-2 py-1 text-gray-700 hover:bg-gray-200 rounded">Contact</a>
+            </nav>
+        </div>
+    </header>
 </html>

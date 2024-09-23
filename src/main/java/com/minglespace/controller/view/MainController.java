@@ -10,6 +10,6 @@ public class MainController {
     @GetMapping("/")
     public String indexPage(Model model){
         model.addAttribute("authenticated", SecurityUtils.isAuthenticated());
-        return "index";
+        return "pages/index";
     }
 }

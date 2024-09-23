@@ -50,7 +50,7 @@ public class SecurityConfig {
 
         // login 설정
         http.formLogin(formLogin -> formLogin
-                .loginProcessingUrl("/login")
+                .loginPage("/login")
                 .usernameParameter("loginId")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/")

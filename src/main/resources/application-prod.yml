@@ -26,5 +26,13 @@ spring:
         default_batch_fetch_size: 500
         dialect: org.hibernate.dialect.MySQLDialect
 
+  # Thymeleaf
+  thymeleaf:
+    prefix: classpath:/templates/pages
+    suffix: .html
+    cache: true
+    enabled: true
+    check-template-location: true
+
 server:
   port: ${SERVER_PORT}

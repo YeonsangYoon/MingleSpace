@@ -27,6 +27,16 @@ spring:
         show_sql: true
         default_batch_fetch_size: 300
 
+  # Thymeleaf
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+    enabled: true
+    check-template-location: true
+
+
+
 server:
   port: 80
 
