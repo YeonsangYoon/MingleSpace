@@ -1,6 +1,6 @@
 package com.minglespace.dto.member;
 
-import com.minglespace.domain.member.MemberRole;
+import com.minglespace.domain.member.RoleType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -15,7 +15,7 @@ public class MemberDto {
     private String email;
     private String nickname;
     private LocalDateTime regDate;
-    private MemberRole role;
+    private RoleType role;
     private boolean enable;
 
     public MemberDto(String loginId, String password, String username, String email, String nickname) {
@@ -25,6 +25,6 @@ public class MemberDto {
         this.email = email;
         this.nickname = nickname;
         this.regDate = LocalDateTime.now(); // 회원가입 시간은 현재 시각
-        this.role = MemberRole.USER;        // 일반 user
+        this.role = RoleType.USER;        // 일반 user
     }
 }

@@ -5,6 +5,7 @@
     <title>MingleSpace</title>
 </head>
 <body>
+    <div th:replace="fragments/header :: ${authenticated} ? 'header-signed' : 'header-notsigned'"></div>
     <h1>hello MingleSpace</h1>
 </body>
 </html>

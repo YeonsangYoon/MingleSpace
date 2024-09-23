@@ -1,14 +1,28 @@
 package com.minglespace.domain.member;
 
+import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
-public enum MemberRole {
-    USER("ROLE_USER", "일반 사용자 권한"),
-    ADMIN("ROLE_ADMIN", "관리자 권한");
+@NoArgsConstructor
+@Entity
+@Table(name = "MEMBER_ROLE")
+public class MemberRole {
+    @Id @GeneratedValue
+    @Column(name = "MEMBER_ROLE_ID")
+    private Long id;
 
-    private final String role;
-    private final String description;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MEMBER_ID")
+    private Member member;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "ROLE")
+    private RoleType roleType;
+
+    public MemberRole(Member member, RoleType roleType) {
+        this.member = member;
+        this.roleType = roleType;
+    }
 }
