@@ -39,7 +39,8 @@ public class SecurityConfig {
         // http 인증 설정
         String[] permitAllWhiteList = {
                 "/",
-                "/login"
+                "/login",
+                "/css/**", "/js/**", "/favicon.ico"     // static files
         };
         http.authorizeHttpRequests(authorize -> authorize
                 .requestMatchers(permitAllWhiteList).permitAll()          // 허용 URL

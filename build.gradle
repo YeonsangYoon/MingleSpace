@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.3.3'
     id 'io.spring.dependency-management' version '1.1.6'
+    id 'com.github.node-gradle.node' version '3.5.1'
 }
 
 group = 'com'
@@ -11,6 +12,13 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
     }
+}
+
+node {
+    version = '16.13.0'     // Node.js 버전
+    npmVersion = '8.1.0'    // npm 버전
+    download = true         // Node.js와 npm을 프로젝트 내에 설치할지 여부
+    nodeProjectDir = file('${projectDir}/src/main/frontend')
 }
 
 configurations {
@@ -44,3 +52,14 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+task copyFrontLib(type: Copy) {
+    from "${projectDir}/src/main/resources/static"
+    into "${projectDir}/build/resources/main/static/."
+}
+
+task npmBuild(type: NpmTask) {
+    args = ['run', 'build']
+    workingDir = file("${projectDir}/src/main/frontend")
+}
+
